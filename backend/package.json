@@ -1,5 +1,5 @@
 {
-  "name": "study-chatroom-backend",
+  "name": "backend",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {

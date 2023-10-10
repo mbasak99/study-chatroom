@@ -1,7 +1,19 @@
-console.log("Server is running...");
+console.log("Starting server...");
 Bun.serve({
-  port: 3000,
-  fetch(request, server) {
-    return new Response("hello world");
+  fetch(req, server) {
+    const success = server.upgrade(req);
+    if (success) {
+      return undefined;
+    }
+    return new Response("Hello world!");
   },
+  websocket: {
+    open(ws) {
+      ws.send("connected!");
+    },
+    message(ws, message) {
+      ws.send(message);
+    },
+  },
+  port: 3000,
 });
