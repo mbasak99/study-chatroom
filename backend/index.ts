@@ -12,7 +12,11 @@ Bun.serve({
       ws.send("connected!");
     },
     message(ws, message) {
+      console.log("echoing %s", message);
       ws.send(message);
+    },
+    close(ws) {
+      console.log("Client has disconnected.");
     },
   },
   port: 3000,
